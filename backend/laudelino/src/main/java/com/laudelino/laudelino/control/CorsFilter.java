@@ -1,4 +1,4 @@
-package com.laudelino.controle;
+package com.laudelino.laudelino.control;
 
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.stereotype.Component;

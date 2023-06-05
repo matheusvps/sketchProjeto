@@ -12,26 +12,26 @@ import org.springframework.web.bind.annotation.*;
 public class TeacherControl {
 
     @Autowired
-    private TeacherService studentService;
+    private TeacherService teacherService;
 
     @PostMapping
     public Teacher createTeacher(@RequestBody Teacher estudante) {
-        return studentService.createTeacher(estudante);
-    }
-
-    @PostMapping("/{id}/{nota}")
-    public void addMark(@PathVariable Long id, @PathVariable int nota) {
-        studentService.addMark(id, nota);
+        return teacherService.createTeacher(estudante);
     }
 
     @PutMapping("/{id}")
     public Teacher updateTeacher(@PathVariable Long id, @RequestBody Teacher estudanteAtualizado) {
-        return studentService.updateTeacher(id, estudanteAtualizado);
+        return teacherService.updateTeacher(id, estudanteAtualizado);
     }
 
     @DeleteMapping("/{id}")
     public void deleteTeacher(@PathVariable Long id) {
-        studentService.deleteTeacher(id);
+        teacherService.deleteTeacher(id);
+    }
+
+    @PutMapping("/{id}")
+    public Teacher changeSubject(@PathVariable Long id, @RequestBody Teacher currentTeacher){
+        return teacherService.updateTeacher(id,currentTeacher);
     }
 
 }
