@@ -1,11 +1,28 @@
 <template>
-  <div>
-    <h1>{{ $t("employeecreate") }}</h1>
-    <h3>{{ $t("name") }}:</h3>
-    <q-input v-model="name" class="input q-field--auto-width" />
-    <q-btn type="submit" class="button" @click="criar">{{
-      $t("create")
-    }}</q-btn>
+  <div class="container">
+    <h1 class="title">{{ $t("employee.create") }}</h1>
+
+    <div class="form-group">
+      <label class="label">{{ $t("name") }}:</label>
+      <q-input v-model="name" class="input" />
+    </div>
+
+    <div class="form-group">
+      <label class="label">{{ $t("email") }}:</label>
+      <q-input v-model="email" class="input" />
+    </div>
+
+    <div class="form-group">
+      <label class="label">{{ $t("age") }}:</label>
+      <q-input v-model="age" type="number" class="input" />
+    </div>
+
+    <div class="form-group">
+      <label class="label">{{ $t("employee.function") }}:</label>
+      <q-input v-model="employeeFunction" class="input" />
+    </div>
+
+    <q-btn type="submit" class="button" @click="create">{{ $t("create") }}</q-btn>
   </div>
 </template>
 
@@ -16,34 +33,36 @@ export default {
   data() {
     return {
       name: "",
+      age: 0,
+      email: "",
+      employeeFunction: ""
     };
   },
   computed: {
-    ...mapState(["students"]),
+    ...mapState(["employees"]),
     proximoId() {
-      if (this.students) return this.students.length + 1;
+      if (this.employees) return this.employees.length + 1;
       return 1;
     },
   },
   methods: {
-    ...mapActions(["createStudent"]),
-    async criar() {
-      const student = {
+    ...mapActions(["createEmployee"]),
+    async create() {
+      const employee = {
         id: this.proximoId,
         name: this.name,
-        biggestMark: 0,
-        average: 0,
-        lowestMark: 0,
-        marks: [],
+        email: this.email,
+        age: this.age,
+        function: this.employeeFunction
       };
-      await this.$store.dispatch("createStudent", student);
+      await this.$store.dispatch("createEmployee", employee);
       this.$q.notify({
-        message: this.$t("studentCreated"),
+        message: this.$t("employeeCreated"),
         color: "positive",
         timeout: 3000,
       });
       setTimeout(() => {
-        this.$router.push(`/students/${student.id}`);
+        this.$router.push(`/employees/${employee.id}`);
       }, 2000);
     },
   },
@@ -51,17 +70,33 @@ export default {
 </script>
 
 <style scoped>
-.input {
-  max-width: 300px;
-  width: 100%;
+.container {
+  max-width: 400px;
   margin: 0 auto;
 }
-.button {
-  margin-top: 20px;
-  margin-bottom: 40px;
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
 }
-.name-custom {
+
+.form-field {
+  margin-bottom: 15px;
+}
+
+.label {
+  font-size: 14px;
   font-weight: bold;
-  color: #333;
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+}
+
+.button {
+  margin-top: 30px;
+  width: 100%;
 }
 </style>

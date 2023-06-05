@@ -1,11 +1,28 @@
 <template>
-  <div>
-    <h1>{{ $t("createStd") }}</h1>
-    <h3>{{ $t("name") }}:</h3>
-    <q-input v-model="name" class="input q-field--auto-width" />
-    <q-btn type="submit" class="button" @click="criar">{{
-      $t("create")
-    }}</q-btn>
+  <div class="container">
+    <h1 class="title">{{ $t("student.create") }}</h1>
+
+    <div class="form-field">
+      <label class="label">{{ $t("name") }}:</label>
+      <q-input v-model="name" class="input" dense outlined />
+    </div>
+
+    <div class="form-field">
+      <label class="label">{{ $t("email") }}:</label>
+      <q-input v-model="email" class="input" dense outlined />
+    </div>
+
+    <div class="form-field">
+      <label class="label">{{ $t("age") }}:</label>
+      <q-input v-model.number="age" class="input" type="number" dense outlined />
+    </div>
+
+    <div class="form-field">
+      <label class="label">{{ $t("class") }}:</label>
+      <q-input v-model.number="grade" class="input" type="number" dense outlined />
+    </div>
+
+    <q-btn type="submit" class="button" @click="create">{{ $t("create") }}</q-btn>
   </div>
 </template>
 
@@ -16,6 +33,9 @@ export default {
   data() {
     return {
       name: "",
+      age: 0,
+      grade: 0,
+      email: ""
     };
   },
   computed: {
@@ -23,45 +43,64 @@ export default {
     proximoId() {
       if (this.students) return this.students.length + 1;
       return 1;
-    },
+    }
   },
   methods: {
     ...mapActions(["createStudent"]),
-    async criar() {
+    async create() {
       const student = {
         id: this.proximoId,
         name: this.name,
+        email: this.email,
+        age: this.age,
+        grade: this.grade,
         biggestMark: 0,
         average: 0,
         lowestMark: 0,
-        marks: [],
+        marks: []
       };
       await this.$store.dispatch("createStudent", student);
       this.$q.notify({
         message: this.$t("studentCreated"),
         color: "positive",
-        timeout: 3000,
+        timeout: 3000
       });
       setTimeout(() => {
         this.$router.push(`/students/${student.id}`);
       }, 2000);
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style scoped>
-.input {
-  max-width: 300px;
-  width: 100%;
+.container {
+  max-width: 400px;
   margin: 0 auto;
 }
-.button {
-  margin-top: 20px;
-  margin-bottom: 40px;
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
 }
-.name-custom {
+
+.form-field {
+  margin-bottom: 15px;
+}
+
+.label {
+  font-size: 14px;
   font-weight: bold;
-  color: #333;
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+}
+
+.button {
+  margin-top: 30px;
+  width: 100%;
 }
 </style>

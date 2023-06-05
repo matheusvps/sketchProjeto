@@ -22,7 +22,6 @@ class StudentService {
   }
 
   getStudentById(id) {
-    console.log(id);
     return axiosInstance.get(`/${id}`);
   }
 

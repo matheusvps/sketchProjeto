@@ -1,28 +1,42 @@
 export default {
-  school: "Welcome to the Sapiens Institute",
-  studentlist: "Student List",
-  studentcreate: "Student Create",
-  start: "Homepage",
+  student: {
+  create: "Create student",
+  updateMark: "Update mark",
+  addMark: "Add mark",
+  delete: "Delete student",
+  marks: "Number of marks",
+  biggestMark: "Smallest mark",
+  lowestMark: "Highest mark",
   average: "Average",
-  biggestMark: "Biggest Mark",
-  lowestMark: "Lowest Mark",
-  testsNumber: "Number of Tests",
-  addTest: "Add test for",
-  deleteTest: "Delete this student",
-  createStd: "Create Student",
-  name: "Name",
-  create: "Create",
-  system: "School System",
-  addMark: "Add Mark",
+  grade: "Grade",
   loadingStudent: "Loading student...",
-  deleteConfirmationMessage: "Are you sure?",
+  testsNumber: "Number of tests",
+  deleteQuest: "Are you sure you want to delete this student?"
+  },
+  teacher: {
+  create: "Create teacher",
+  subject: "Subject",
+  yearsTeached: "Years taught",
+  updateCourse: "Update subject",
+  deleteQuest: "Are you sure you want to delete this teacher?"
+  },
+  employee:{
+  create: "Create employee",
+  delete: "Delete employee",
+  function: "Function",
+  deleteQuest: "Are you sure you want to delete this employee?"
+  },
+  
+  school: "Welcome to Sapiens Institute",
+  studentlist: "Student List",
+  start: "Start",
+  name: "Name",
+  system: "School System",
   cancelDelete: "Cancel",
   confirmDelete: "Delete",
-  studentCreated: "Student created!",
-  deleteQuest: "Are you sure that you want to delete this student?",
   class: "Class",
   grade: "Grade",
-  teachercreate: "Create Teacher",
-  employeecreate: "Create Employee",
-  register: "Register Database",
-};
+  register: "Registration Data",
+  email: "email",
+  age: "Age"
+  };

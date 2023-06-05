@@ -18,16 +18,14 @@ export default new Vuex.Store({
     SET_STUDENTS(state, students) {
       state.students = students;
     },
-    SET_CURRENT_STUDENT(state, student) {
+    SET_CURRENT_STUDENT(state, student) { 
       state.currentStudent = student;
+      state.name = student.name;
+      state.age = student.age;
       state.average = student.average;
       state.biggestMark = student.biggestMark;
       state.lowestMark = student.lowestMark;
       state.tests = student.marks.length;
-      console.log(student);
-    },
-    SET_STUDENT_NAME(state, name) {
-      state.currentStudent.name = name;
     },
     SET_TESTS_NUMBER(state, tests) {
       state.tests = tests;
