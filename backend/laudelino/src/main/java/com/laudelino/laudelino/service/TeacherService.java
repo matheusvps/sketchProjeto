@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.laudelino.laudelino.models.Teacher;
-import com.laudelino.laudelino.models.Teacher;
 import com.laudelino.laudelino.repositories.TeacherRepository;
 
 @Service

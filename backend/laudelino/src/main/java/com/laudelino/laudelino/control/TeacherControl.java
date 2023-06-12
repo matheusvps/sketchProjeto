@@ -1,7 +1,5 @@
 package com.laudelino.laudelino.control;
 
-import java.util.List;
-
 import com.laudelino.laudelino.models.Teacher;
 import com.laudelino.laudelino.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
